@@ -17,7 +17,7 @@ async def on_ready():
 async def on_guild_join(guild):
     
     name = "**🎱 Fortune Teller**"
-    command1 = ""
+    command1 = "~8ball (your message here)"
     command2 = ""
     command3 = ""
     command4 = ""
@@ -26,11 +26,8 @@ async def on_guild_join(guild):
     I'm {}, created by b9king#6857 with help from I am Moonslice#4132
     My commands are:
     {}
-    {}
-    {}
-    {}
     You can support my creator here: https://www.patreon.com/b9king
-    """.format(guild.name,name,command1,command2,command3,command4)    
+    """.format(guild.name,name,command1)    
     
     x = guild.channels
     y = False
@@ -52,8 +49,8 @@ async def on_message(message):
     if message.content.startswith("~8ball"):
         eightball = ["it is certain", "it is decidedly so", "without a doubt", "yes-definitely", "you may rely on it", "as I see it, yes","most likely","outlook good","yes","signs point to yes", "reply hazy, try again", "ask again later", "better not tell you now","cannot predict now","concentrate and ask again", "Don't count on it", "My reply is no","my sources say no", "Outlook not so good", "very doubtful"]
         
-        message.content = message.content.replace("8ball", "")
-        msg = " 🎱 In regards to " + message.content + " " + random.choice(eightball).format(message)
+        message.content = message.content.replace("~8ball", "")
+        msg = " 🎱 In regards to '" + message.content + "' " + random.choice(eightball).format(message)
         await message.channel.send(msg)        
 
 
