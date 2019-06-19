@@ -51,7 +51,34 @@ async def on_message(message):
         
         message.content = message.content.replace("~8ball", "")
         msg = " 🎱 In regards to '" + message.content + "' " + random.choice(eightball).format(message)
-        await message.channel.send(msg)        
+        await message.channel.send(msg) 
+ #_________________________________________________________________
+#________________Help Command_____________________________________
+    elif message.content.startswith("(debug 124 8ball)"):
+        x = message.content.replace("(debug 124 8ball)","")
+        await client.change_presence(status=discord.Status.online, activity=discord.Game(x))
+    
+    
+    elif message.content == "~Help 8ball":
+        name = "**🎱 Fortune Teller**"
+        command1 = "~8ball (your message here)"
+        command2 = "**~Conditions** (us zipcode)"
+        command3 = "**~Forecast** (us zipcode)"
+        command4 = "**~Alerts** (us zipcode)"
+        
+        Helpmessage = """
+        **Thanks for adding me to {}**!
+        *I am a fortune telling Magic 8ball!🎱*
+        
+        My commands are:
+        {}
+        **Click the embed to support my creator**
+        """.format(message.guild.name,command1)
+        
+        embed=discord.Embed(title="Magic 8ball Help", url="https://www.patreon.com/b9king", description= Helpmessage, color=0x00ffff)
+        embed.set_thumbnail(url="https://files.catbox.moe/gzwlw4.png")
+        await message.channel.send(embed=embed)        
+
 
 
 
